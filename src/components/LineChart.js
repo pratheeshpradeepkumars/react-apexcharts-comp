@@ -6,16 +6,7 @@ class LineChart extends Component {
     super(props);
 
     this.state = {
-      options: this.props.options
-        ? this.props.options
-        : {
-            chart: {
-              id: this.props.id || 'basic-line'
-            },
-            xaxis: {
-              categories: this.props.xAxis || []
-            }
-          },
+      options: this.props.options || {},
       series: this.props.data || []
     };
   }
@@ -29,7 +20,8 @@ class LineChart extends Component {
               options={this.state.options}
               series={this.state.series}
               type="line"
-              width="100%"
+              width={this.props.width || '100%'}
+              height={this.props.height || ''}
             />
           </div>
         </div>
